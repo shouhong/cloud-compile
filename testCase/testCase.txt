@@ -1,0 +1,35 @@
+curl -w '\n' -XPOST cloud-compile-shouhong.v2.tenxapp.com:52363/api/compile -H 'Content-Type:application/json' -d '{
+  "userName": "testUser",
+  "body": [{"name": "Main.java",
+            "path": "com/gaoxiaobang",
+            "content": "package com.gaoxiaobang; import com.gaoxiaobang.util.Calculator; public class Main { public static void main(String[] args) { Calculator cal = new Calculator(); if (args.length < 2) { System.out.println(\"Invalid input.\");} else { long result = cal.multiply(Integer.parseInt(args[0]), Integer.parseInt(args[1])); System.out.println(String.format(\"%s * %s = %d\", args[0], args[1], result));}}}"},
+           {"name": "Calculator.java",
+             "path": "com/gaoxiaobang/util",
+             "content": "package com.gaoxiaobang.util; public class Calculator { public long multiply(int op1, int op2) { return op1 * op2;} }"}],
+  "scannerData": "",
+  "mainClass": "com.gaoxiaobang.Main",
+  "runtimeArgus": "2 2"
+}'
+
+curl -w '\n' -XPOST cloud-compile-shouhong.v2.tenxapp.com:52363/api/compile -H 'Content-Type:application/json' -d '{
+  "userName": "testUser",
+  "body": [{"name": "Main.java",
+             "path": "com/gaoxiaobang",
+            "content": "package com.gaoxiaobang; public class Main {public static void main(String[] args) {System.out.println(\"Hello World!\"); }}"
+               }],
+  "scannerData": "",
+  "mainClass": "com.gaoxiaobang.Main",
+  "runtimeArgus": "2 2"
+}'
+
+
+curl -w '\n' -XPOST cloud-compile-shouhong.v2.tenxapp.com:52363/api/compile -H 'Content-Type:application/json' -d '{
+  "userName": "testUser",
+  "body": [{"name": "Main.java",
+                    "path": "com/gaoxiaobang",
+                    "content": "package com.gaoxiaobang; import java.util.Scanner; public class Main { public static void main(String[] args) { Scanner sc = new Scanner(System.in); int i = sc.nextInt(); int j = sc.nextInt(); System.out.println(String.format(\"%d + %d = %d\", i, j, i + j)); sc.close();}}"}
+            ],
+  "scannerData": "2 3",
+  "mainClass": "com.gaoxiaobang.Main",
+  "runtimeArgus": ""
+}'

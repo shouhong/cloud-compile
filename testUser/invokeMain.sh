@@ -1,0 +1,1 @@
+java -classpath testUser/src com.ArgsDemo tenxcloud 2

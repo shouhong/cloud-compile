@@ -1,0 +1,1 @@
+package com;/*** Created by cayley on 17/1/17.*/public class ArgsDemo {public static void main(String[] args) {System.out.println("我的姓名是："+args[0]+"，我的年龄是："+args[1]);}}

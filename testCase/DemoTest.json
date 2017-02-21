@@ -1,0 +1,212 @@
+1. 单文件，带参数，正常运行
+{
+    "userName": "testUser",
+    "token":"eba167ed8dd23cb6e38ccfb389adc515",
+    "timestamp":1484641366908,
+    "langId":10,
+    "mainPath":"com/ArgsDemo.java",
+    "mainArgus":"lixing 26",
+    "runtimeArgus":"",
+    "rand":"123456",
+    "body":[{
+        "path":"com/ArgsDemo.java",
+        "content":"package com;/*** Created by cayley on 17/1/17.*/public class ArgsDemo {public static void main(String[] args) {System.out.println(\"我的姓名是：\"+args[0]+\"，我的年龄是：\"+args[1]);}}"
+    }]
+}
+
+测试结果：
+{
+    "compilerInfo": "",
+    "content": "我的姓名是：lixing，我的年龄是：26\n",
+    "testResults": null
+}
+
+============================================================================================================
+2. 多文件，无testCase，无参数，正常运行
+{
+    "userName": "testUser",
+    "token":"eba167ed8dd23cb6e38ccfb389adc515",
+    "timestamp":1484641366908,
+    "langId":10,
+    "mainPath":"com/MyDemo.java",
+    "mainArgus":"",
+    "runtimeArgus":"",
+    "rand":"123456",
+    "body":[{
+        "path":"com/MyDemo.java",
+        "content":"package com;import test.Mouse;import test.Penguin;/*** Created by cayley on 17/1/17.*/public class MyDemo {public static void main(String[] args) {Mouse mouse = new Mouse(\"老鼠\",1);mouse.introduction();Penguin penguin = new Penguin(\"企鹅\",2);penguin.introduction();}}"
+    },{
+        "path":"com/Animal.java",
+        "content":"package com; /** * Created by cayley on 17/1/17.  */ public class Animal { private String name; private int id; public Animal(String myName, int myid) { name = myName; id = myid; } public void eat(){ System.out.println(name+\"正在吃\"); } public void sleep(){ System.out.println(name+\"正在睡\"); } public void introduction() { System.out.println(\"大家好！我是\"         + id + \"号\" + name + \".\"    ); } }"
+    },{
+        "path":"test/Mouse.java",
+        "content":"package test; import com.Animal; /** * Created by cayley on 17/1/17.  */ public class Mouse extends Animal { public Mouse(String myName, int myid) { super(myName, myid); } }"
+    },{
+        "path":"test/Penguin.java",
+        "content":"package test; import com.Animal; /** * Created by cayley on 17/1/17.  */ public class Penguin extends Animal { public Penguin(String myName, int myid) { super(myName, myid); } }"
+    }]
+}
+
+测试结果：
+{
+    "compilerInfo": "",
+    "content": "大家好！我是1号老鼠.\n大家好！我是2号企鹅.\n",
+    "testResults": null
+}
+
+============================================================================================================
+3. 单文件，编译错误
+{
+    "userName":"testUser",
+    "token":"eba167ed8dd23cb6e38ccfb389adc515",
+    "timestamp":1484641366908,
+    "langId":10,
+    "mainPath":"com/ArgsDemo2.java",
+    "mainArgus":"",
+    "runtimeArgus":"",
+    "rand":"123456",
+    "body":[{
+        "path":"com/ArgsDemo2.java",
+        "content":"package com; /** * Created by cayley on 17/1/17.  */ public class ArgsDemo2 { public static void main(String[] args) { System.out.println(\"我的姓名是：\"+args[0]+\"，我的年龄是：\"+args[1]) } }"
+    }]
+}
+
+测试结果：
+{
+    "compilerInfo": "testUser/src/com/ArgsDemo2.java:1: error: ';' expected\npackage com; /** * Created by cayley on 17/1/17. */ public class ArgsDemo2 { public static void main(String[] args) { System.out.println(\"我的姓名是：\"+args[0]+\"，我的年龄是：\"+args[1]) } }\n ^\n1 error\n",
+    "content": "Error: Could not find or load main class com.ArgsDemo2\n",
+    "testResults": null
+}
+
+============================================================================================================
+4. Scanner输入
+{
+    "userName":"testUser",
+    "token":"eba167ed8dd23cb6e38ccfb389adc515",
+    "timestamp":1484641366908,
+    "langId":10,
+    "mainPath":"com/ScannerDemo.java",
+    "mainArgus":"",
+    "runtimeArgus":"李星 18",
+    "rand":"123456",
+    "body":[{
+        "path":"com/ScannerDemo.java",
+        "content":"package com; import java.util.Scanner; /** * Created by cayley on 17/1/18.  */ public class ScannerDemo { public static void main(String[] args) { Scanner scanner = new Scanner(System.in); System.out.println(\"姓名：\"); String name = scanner.next(); System.out.println(\"年龄：\"); int age = scanner.nextInt(); System.out.println(\"我叫\"+name+\",今年\"+age); } }"
+    }]
+}
+
+测试结果：
+{
+    "compilerInfo": "",
+    "content": "姓名：\n年龄：\n我叫李星,今年18\n",
+    "testResults": null
+}
+
+============================================================================================================
+5. 多文件，带testCase，无参数，正常运行
+{
+    "userName": "testUser",
+    "token":"eba167ed8dd23cb6e38ccfb389adc515",
+    "timestamp":1484641366908,
+    "langId":10,
+    "mainPath":"com/gaoxiaobang/Main.java",
+    "mainArgus":"1 2",
+    "runtimeArgus":"",
+    "rand":"123456",
+    "body":[{
+        "path":"com/gaoxiaobang/Main.java",
+        "content":"package com.gaoxiaobang; import com.gaoxiaobang.util.Calculator; public class Main { public static void main(String[] args) { Calculator cal = new Calculator(); if (args.length < 2) { System.out.println(\"Invalid input.\"); } else { long result = cal.multiply(Integer.parseInt(args[0]), Integer.parseInt(args[1])); System.out.println(String.format(\"%s * %s = %d\", args[0], args[1], result)); } } }"
+        },
+        {
+        "path":"com/gaoxiaobang/util/Calculator.java",
+        "content":"package com.gaoxiaobang.util; public class Calculator { public long multiply(int op1, int op2) { return op1 * op2; } }"
+        }],
+    "testCase":[{
+        "path":"com/gaoxiaobang/CalculatorATest.java",
+        "content":"package com.gaoxiaobang; import static org.junit.Assert.*; import org.junit.Test; import com.gaoxiaobang.util.Calculator; public class CalculatorATest { @Test public void testA1() { Calculator tester = new Calculator(); assertEquals(\"10 x 0 must be 0\", 1, tester.multiply(10, 0)); } @Test public void testA2() { Calculator tester = new Calculator(); assertEquals(\"2 x 3 must be 6\", 2, tester.multiply(2, 3)); } @Test public void testA3() { Calculator tester = new Calculator(); assertEquals(\"4 x 5 must be 20\", 20, tester.multiply(4, 5)); } }"
+        },
+        {
+        "path":"com/gaoxiaobang/CalculatorBTest.java",
+        "content":"package com.gaoxiaobang; import static org.junit.Assert.*; import org.junit.Test; import com.gaoxiaobang.util.Calculator; public class CalculatorBTest { @Test public void testB1() { Calculator tester = new Calculator(); assertEquals(\"10 x 0 must be 0\", 1, tester.multiply(10, 0)); } @Test public void testB2() { Calculator tester = new Calculator(); assertEquals(\"2 x 3 must be 6\", 6, tester.multiply(2, 3)); } }"
+        }]
+}
+
+测试结果：
+{
+    "compilerInfo": "",
+    "content": "1 * 2 = 2\n",
+    "testResults":{
+    "runCount": 5,
+    "ignoreCount": 0,
+    "failureCount": 3,
+    "runTime": 8,
+    "failures":[
+        {
+            "testHeader": "testA1(com.gaoxiaobang.CalculatorATest)",
+            "message": "10 x 0 must be 0 expected:<1> but was:<0>"
+        },
+        {
+            "testHeader": "testA2(com.gaoxiaobang.CalculatorATest)",
+            "message": "2 x 3 must be 6 expected:<2> but was:<6>"
+        },
+        {
+            "testHeader": "testB1(com.gaoxiaobang.CalculatorBTest)",
+            "message": "10 x 0 must be 0 expected:<1> but was:<0>"
+        }
+    ]}
+}
+
+============================================================================================================
+6. 超时测试
+{
+    "userName":"testUser",
+    "token":"eba167ed8dd23cb6e38ccfb389adc515",
+    "timestamp":1484641366908,
+    "langId":10,
+    "mainPath":"com/ScannerDemo.java",
+    "mainArgus":"",
+    "runtimeArgus":"",
+    "timeout": 5,
+    "rand":"123456",
+    "body":[{
+        "path":"com/ScannerDemo.java",
+        "content":"package com; import java.util.Scanner; /** * Created by cayley on 17/1/18.  */ public class ScannerDemo { public static void main(String[] args) { Scanner scanner = new Scanner(System.in); System.out.println(\"姓名：\"); String name = scanner.next(); System.out.println(\"年龄：\"); int age = scanner.nextInt(); System.out.println(\"我叫\"+name+\",今年\"+age); } }"
+    }]
+}
+
+测试结果：
+{
+    "timestamp": 1485146108587,
+    "status": 500,
+    "error": "Internal Server Error",
+    "exception": "java.util.concurrent.TimeoutException",
+    "message": "No message available",
+    "path": "/api/compile"
+}
+
+============================================================================================================
+7. 读取文件，无testCase，无参数，正常运行
+{
+    "userName": "testUser",
+    "token":"eba167ed8dd23cb6e38ccfb389adc515",
+    "timestamp":1484641366908,
+    "langId":10,
+    "mainPath":"com/gaoxiaobang/MyClass.java",
+    "mainArgus":"",
+    "runtimeArgus":"",
+    "rand":"123456",
+    "body":[{
+        "path":"com/gaoxiaobang/MyClass.java",
+        "content":"package com.gaoxiaobang;import java.io.IOException;import java.nio.file.Files;import java.nio.file.Paths;public class MyClass { public static void main(String[] args) throws IOException {             byte[] encoded = Files.readAllBytes(Paths.get("./testdir/test.txt"));           String content = new String(encoded);           System.out.println(content);    }}"
+    },{
+        "path":"testdir/test.txt",
+        "content":"Read file  test"
+    }]
+}
+
+测试结果：
+{
+    "compilerInfo": "",
+    "content": "大家好！我是1号老鼠.\n大家好！我是2号企鹅.\n",
+    "testResults": null
+}
