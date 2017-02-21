@@ -263,7 +263,7 @@ public class JavacCompileController {
 		if (!runResult.getErrorInfo().isEmpty()) {
 			code = 1;
 		}
-        Output output = new Output(compilerInfo, runResult.getInputInfo(), 
+        Output output = new Output(compilerInfo, runResult.getInputInfo() + "For Demo!!!", 
         		runResult.getErrorInfo(), testResult, 200, code);
         
         long totalTime = System.currentTimeMillis();
